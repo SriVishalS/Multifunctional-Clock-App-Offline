@@ -1,0 +1,15 @@
+{
+      "short_name": "Clock",
+      "name": "Clock Web App",
+      "icons": [
+            {
+                  "src": "./files/webLogo.png",
+                  "type": "image/png",
+                  "sizes": "192x192"
+            }
+      ],
+      "start_url": "index.html",
+      "display": "standalone",
+      "background_color": "#000",
+      "theme_color": "#000"
+}

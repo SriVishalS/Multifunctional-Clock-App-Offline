@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family:  'Itim', cursive !important;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #222831 !important;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/*  CLOCK */
+#slide1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222831;
+}
+.clock1 {
+  width: 300px;
+  height: 300px;
+  margin: 48px;
+  padding: 1.5rem;
+  border: 6px solid #222831;
+  border-radius: 50%;
+  box-shadow: -8px -8px 12px rgba(57, 62, 67, 0.4),
+    inset 8px 8px 12px rgba(0, 0, 0, 0.3),
+    inset -8px -8px 12px rgba(57, 62, 67, 0.4), 8px 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.outer-clock {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background-color: #222831;
+}
+
+.outer-clock::before,
+.outer-clock::after,
+.outer-clock .marking {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background-color: #bdbdcb;
+  z-index: 0;
+  left: 49%;
+}
+
+.outer-clock::after {
+  transform: rotate(90deg);
+}
+
+.outer-clock .marking {
+  width: 2px;
+}
+
+.outer-clock .marking.marking-one {
+  transform: rotate(30deg);
+}
+
+.outer-clock .marking.marking-two {
+  transform: rotate(60deg);
+}
+
+.outer-clock .marking.marking-three {
+  transform: rotate(120deg);
+}
+
+.outer-clock .marking.marking-four {
+  transform: rotate(150deg);
+}
+
+.outer-clock .marking-seconds {
+  background-color: transparent;
+  z-index: 1;
+}
+
+.outer-clock .marking-seconds::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 32px;
+  top: -2px;
+  left: -2px;
+  background-color: #ffc857;
+}
+
+.inner-clock {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background-color: #222831;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.inner-clock .clock-time {
+  position: absolute;
+  top: 40%;
+  left: 7%;
+  width: 92%;
+  color: #ffc857;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 3px;
+}
+/* STOPWATCH  */
+:root {
+  --primary-clr: #222831; /* used for background */
+  --secondary-clr: #2e4052;
+  --accent-clr: #ffc857;
+  --primary-txt-clr: #212427;
+  --secondary-txt-clr: gray;
+}
+
+#swiper-slide-2 {
+  background: var(--primary-clr);
+  color: var(--primary-txt-clr);
+}
+
+#stopwatchTicker {
+  margin-bottom: 0;
+  color: #ffc857 !important;
+}
+#lapTicker {
+  margin-top: 0.5rem;
+  color: var(--secondary-txt-clr);
+}
+
+.dividing-line {
+  border: none;
+  border-bottom: 1px solid #2e4052;
+  width: 100%;
+}
+
+.dividing-line-2 {
+  border: none;
+  border-bottom: 1px solid #fff;
+  width: 100%;
+}
+
+.container {
+  width: min(80%, 70.5rem);
+  margin-inline: auto;
+}
+.lap {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  overflow-y: auto;
+  height: 50vh;
+}
+
+.lap > :first-child > :first-child {
+  color: #fff;
+}
+
+.lap__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  color: #fff;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.controls {
+  background-color: var(--primary-clr);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 8rem;
+  padding: 1rem;
+  padding-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.controls__button {
+  background: var(--accent-clr);
+  color: var(--secondary-clr);
+  border: none;
+  border-radius: 100%;
+  padding: 1rem;
+  font-size: 1.25rem;
+  transition: 0.25s;
+  width: 60px;
+}
+
+.controls__button:hover {
+  cursor: pointer;
+  color: var(--accent-clr);
+  background: var(--secondary-clr);
+  transition: 0.25s;
+}
+
+.controls__button:disabled {
+  background: gray;
+  color: lightgray;
+  cursor: not-allowed;
+}
+
+/* WORLD CLOCK  */
+.clock {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: lightblue;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  /* box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288); */
+}
+.clock:before {
+  position: absolute;
+  content: "";
+  height: 220px;
+  width: 220px;
+  background: lightblue;
+  border-radius: 50%;
+  box-shadow: inset -3px -3px 7px #ffffff73,
+    inset 3px 3px 5px rgba(94, 104, 121, 0.288);
+}
+.clock:after {
+  position: absolute;
+  content: "";
+  height: 120px;
+  width: 120px;
+  background: lightblue;
+  border-radius: 50%;
+  box-shadow: -1px -1px 5px #ffffff73, 1px 1px 3px rgba(94, 104, 121, 0.288);
+}
+.clock .center-nut {
+  height: 15px;
+  width: 15px;
+  background: #404040;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+}
+.clock .center-nut2 {
+  height: 9px;
+  width: 9px;
+  background: #ffc857;
+  border-radius: 50%;
+  z-index: 15;
+  position: absolute;
+}
+.indicators div {
+  position: absolute;
+  width: 2px;
+  height: 5px;
+  background: #404040;
+}
+.indicators div:nth-child(1) {
+  transform: rotate(30deg) translateY(-100px);
+}
+.indicators div:nth-child(2) {
+  transform: rotate(60deg) translateY(-100px);
+}
+.indicators div:nth-child(3) {
+  background: red;
+  transform: rotate(90deg) translateY(-100px);
+}
+.indicators div:nth-child(4) {
+  transform: rotate(120deg) translateY(-100px);
+}
+.indicators div:nth-child(5) {
+  transform: rotate(150deg) translateY(-100px);
+}
+.indicators div:nth-child(6) {
+  background: red;
+  transform: rotate(180deg) translateY(-100px);
+}
+.indicators div:nth-child(7) {
+  transform: rotate(210deg) translateY(-100px);
+}
+.indicators div:nth-child(8) {
+  transform: rotate(240deg) translateY(-100px);
+}
+.indicators div:nth-child(9) {
+  background: red;
+  transform: rotate(270deg) translateY(-100px);
+}
+.indicators div:nth-child(10) {
+  transform: rotate(300deg) translateY(-100px);
+}
+.indicators div:nth-child(11) {
+  transform: rotate(330deg) translateY(-100px);
+}
+.indicators div:nth-child(12) {
+  background: red;
+  transform: rotate(360deg) translateY(-100px);
+}
+.sec-hand,
+.min-hand,
+.hr-hand {
+  position: absolute;
+}
+.sec-hand,
+.sec {
+  height: 180px;
+  width: 180px;
+  z-index: 6;
+}
+.min-hand,
+.min {
+  height: 140px;
+  width: 140px;
+  z-index: 5;
+}
+.hr-hand,
+.hr {
+  height: 110px;
+  width: 110px;
+  z-index: 4;
+}
+.sec,
+.min,
+.hr {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+.sec:before {
+  position: absolute;
+  content: "";
+  height: 110px;
+  width: 2px;
+  background: black;
+}
+.sec:after {
+  position: absolute;
+  content: "";
+  height: 35px;
+  width: 7px;
+}
+.min:before {
+  position: absolute;
+  content: "";
+  width: 3px;
+  top: -15px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 60px solid black;
+}
+.min:after {
+  position: absolute;
+  content: "";
+  width: 1px;
+  top: 40px;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 30px solid black;
+}
+.hr:before {
+  position: absolute;
+  content: "";
+  width: 1px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 35px solid #303030;
+}
+.hr:after {
+  position: absolute;
+  content: "";
+  width: 3px;
+  top: 34px;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 25px solid #303030;
+}
+.DIV2 {
+  width: 118%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.DIV1 {
+  height: 40px;
+  width: 70%;
+  color: white;
+}
+.DIV {
+  height: 50px;
+  width: 70%;
+  /* background-color: #ffc857; */
+  border-radius: 20px;
+  color: gray;
+}
+/* .DIV:hover {
+  background-color: black;
+  cursor: pointer;
+  color: #bdbdcb;
+} */
+.DIV > h3 {
+  padding: 15px;
+}
+/* ALARM  */
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+#slide4 {
+  padding: 0 10px;
+  min-height: 100vh;
+  background: #000;
+  color: #fff !important;
+}
+.wrapper {
+  width: 440px;
+  padding: 30px 30px 38px;
+  border-radius: 10px;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.wrapper img {
+  max-width: 103px;
+}
+.wrapper h1 {
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0;
+}
+.wrapper .content {
+  width: 100%;
+  justify-content: space-between;
+}
+.content.disable {
+  cursor: no-drop;
+}
+.content .column {
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  width: calc(100% / 3 - 5px);
+}
+.content.disable .column {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.column select {
+  width: 100%;
+  height: 53px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 19px;
+  color: #bfbfbf;
+}
+.wrapper button {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 17px 0;
+  margin-top: 20px;
+  border-radius: 5px;
+  background: #ffc857;
+}
